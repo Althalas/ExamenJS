@@ -1,11 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href=CSS/style.css />
-    <title>ExamenJS</title>
-  </head>
-  <body></body>
-  <script type="module" src="main.js"></script>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricity Business</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Electricity Business</h1>
+        <div id="countdown">Prochaine réservation dans <span id="countdown-timer">--:--:--</span></div>
+    </header>
+
+    <!-- Recherche -->
+    <div class="search">
+        <input type="text" id="address" placeholder="Entrez une adresse">
+        <button id="search">Rechercher</button>
+        <button id="toggle">Basculer vue</button>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="container">
+        <!-- Carte -->
+        <div class="map-section">
+            <h2>Autour de vous</h2>
+            <div id="map"></div>
+            <div id="list" class="hidden"></div>
+        </div>
+
+        <!-- Réservations -->
+        <div class="reservation-section">
+            <!-- Nouvelle réservation -->
+            <div class="new-reservation">
+                <h3>Nouvelle réservation <span id="selected-borne"></span></h3>
+                <form id="reservation-form">
+                    <div>
+                        <label>Date:</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <div>
+                        <label>Heure:</label>
+                        <input type="time" id="time" required>
+                    </div>
+                    <div>
+                        <label>Durée (h):</label>
+                        <select id="duration" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
+                    <button type="submit">Confirmer</button>
+                </form>
+            </div>
+
+            <!-- Mes réservations -->
+            <div class="my-reservations">
+                <h3>Mes réservations</h3>
+                <table id="reservations-table">
+                    <thead>
+                        <tr>
+                            <th>ID Borne</th>
+                            <th>Type</th>
+                            <th>Date</th>
+                            <th>Heure</th>
+                            <th>Durée</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reservations-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script type="module" src="JS/main.js"></script>
+</body>
 </html>
